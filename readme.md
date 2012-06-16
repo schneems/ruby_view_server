@@ -195,6 +195,55 @@ This script looks in your `views` directory and reads in all the names of files 
 This will display the current time. If you refresh your page your time should change.
 
 
+## 6) Talking to your Server
+
+You've been sending your server data and you didn't even know it. Whey you visit http://localhost:8000/index in the browser the server gets the url that you typed in and sees that you're looking for the `/index` path. What if we wanted our server to do something more interesting, send it more data, like a facebook status update...how do we do that?
+
+
+### Methods of sending data to servers
+
+You can use two methods of sending data to servers, links and forms. You can use simple buttons, but these are just forms with no  elements in them.
+
+Forms have [many different field types](http://www.w3schools.com/html/html_forms.asp): text fields, password fields, radio buttons, checkboxes, and submit buttons just to name a few. While there are more complex inputs available like a google maps viewer, these either are built using simple form elements as a baseline or are crafted from scratch with javascript. 90% of the time you'll want to use standard elements and if you need some customization you can add it on top of the element using CSS or javascript. Think back to the facebook status update example, at it's core it's just a text area input and a button.
+
+In this section we will add a simple text box and button asking visitors to enter their name we can then pull that data from the "request" object from the server and render a message to the user.
+
+Since we're building the html from the server we have access to the request (req) local variable inside of our erb. If you look at the class of the req object you'll see it is a WEBrick::HTTPRequest, and if you search for WEBrick::HTTPRequest docs you will find the [WEBrick::HTTPRequest documentationn](http://www.ruby-doc.org/stdlib-1.9.3/libdoc/webrick/rdoc/WEBrick/HTTPRequest.html). Here we see that if we call `query` on this object wee will get the query returned as a hash. In your layout add this somewhere:
+
+        <%= req.query %>
+
+Now refresh the page, what do you see? Probably an empty hash `{}` try adding a query string on to the end of your url like [http://localhost:8000/index?cat=meow](http://localhost:8000/index?cat=meow). a query string is the stuff after the `?` at the end of a url, when you do a search on google this is how google gets the info.
+
+You should now see `{"cat" => "meow"}` where you put you `req.query`. When you see the data in a query string `?` it means the data was transfered by a GET request. You can even see that it was a GET request in the server log
+
+        localhost - - [16/Jun/2012:16:47:03 CDT] "GET /index?cat=meow HTTP/1.1" 200 444
+
+If you wanted to send data without exposing that via a query string you can do so using a POST request with a form. Add this to your layout:
+
+
+        <form method='post'>
+            First name: <input type="text" name="first_name" placeholder='first name'/><br />
+            <input type="submit" value="Submit" />
+        </form>
+
+
+Refresh the page, and enter your name, and hit 'submit'. This will send your name in a field called 'first_name' to the server, the server will then parse the erb, call `req.query` and convert your query to a hash such as ` {"first_name"=>"richard"}` it will then convert the erb to html and server it back to your browser. You should now see your name in the view like this:
+
+         {"first_name"=>"bar"}
+
+Homework:
+
+People like to feel welcomed when they visit a new web page, but they don't like random `{}` characters. Write some logic that if `req.query['first_name'] && req.query['first_name'].empty?` then don't show the query hash, otherwise show a welcome message that says their name, for example "Hello Richard".
+
+
+In ruby only `nil` and `false` will evaluate as false see the data in `boolean_logic_cheatsheet.rb` in this project
+
+
+Now add another field from [HTML Forms and Input](http://www.w3schools.com/html/html_forms.asp) such as radio button text area, or checkbox to your form. Now display this information to the users of your page.
+
+Commit the results.
+
 # Done
 
-Congrats, we've built and modified a very simple web server that delivers dynamic content. With a few simple modifications we could push this to a PaaS such as Heroku to server our dynamic site. The important take aways from this exercise are manipulating view files. Don't forget to push your changes back to your fork.
+Congrats, we've built and modified a very simple web server that delivers dynamic content. With a few simple modifications we could push this to a platform such as Heroku to server our dynamic site. The important take aways from this exercise are manipulating view files and understanding how our server takes in request data and generates html to deliver back to browsers. Don't forget to push your changes back to your fork.
+
