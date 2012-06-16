@@ -54,7 +54,7 @@ Erb blocks without the equals will not print out `<% %>` but will still be evalu
 
 In the terminal you can run
 
-   $ ruby erb_example.rb
+    $ ruby erb_example.rb
 
 Homework:
 
