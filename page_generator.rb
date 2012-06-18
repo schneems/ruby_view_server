@@ -48,15 +48,25 @@ end
 #   end
 ##  Here the * character represents a wildcard
 
-
+puts "================================================"
+puts "=== Converting files in /views to html ========="
+puts "================================================"
 Dir['views/*.html.erb'].each do |file|
+  puts "- Reading #{file}"
+
   content_string  = File.open(file, 'r').read
   file_name       = file.split('/').last.gsub('html.erb', 'html')
   output_file     = "public/#{file_name}"
+
+  puts "  - Converting .html.erb to html"
   main_contents   = process_erb(content_string)
 
+  puts "  - Writing #{output_file}"
   File.open(output_file, 'w') do |f|
     f.write(main_contents)
   end
 end
 
+puts "================================================"
+puts "=== Done, open files in /public with browser ==="
+puts "================================================"
