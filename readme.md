@@ -226,7 +226,7 @@ In this section we will add a simple text box and button asking visitors to ente
 
 Since we're building the html from the server we have access to the request (req) local variable inside of our erb. If you look at the class of the req object you'll see it is a WEBrick::HTTPRequest, and if you search for WEBrick::HTTPRequest docs you will find the [WEBrick::HTTPRequest documentationn](http://www.ruby-doc.org/stdlib-1.9.3/libdoc/webrick/rdoc/WEBrick/HTTPRequest.html). Here we see that if we call `query` on this object wee will get the query returned as a hash. In your layout add this somewhere:
 
-        <%= req.query %>
+        <%= req.query.inspect %>
 
 Now refresh the page, what do you see? Probably an empty hash `{}` try adding a query string on to the end of your url like [http://localhost:8000/index?cat=meow](http://localhost:8000/index?cat=meow). a query string is the stuff after the `?` at the end of a url, when you do a search on google this is how google gets the info.
 
