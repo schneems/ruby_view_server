@@ -13,13 +13,22 @@ There is homework associated with this demo, after each section you will need to
 
     $ git clone https://github.com/.../... .git # replace the https... section with your own url (ends in .git)
 
-Once you're done with the homework and it has been committed to your laptop, push it to your fork on Github. Then open a pull request. Your assignment will be graded from this pull request. To make commit changes go to the directory then run
+Then go to the directory
 
+    $ cd ruby_view_server
+
+And open up this project in your favorite text editor. Follow along with instructions.
+
+
+## Committing to GIT
+
+Use this section as a reference to GIT.
+
+To make commit changes go to the directory then run
 
     $ git add .
 
 This will add your changes to the git repository, once you're happy with the changes commit it to the local repository with:
-
 
     $ git commit -m "homework section 1 completed"
 
@@ -28,6 +37,8 @@ To push your local changes to github you can run:
     $ git push origin master
 
 Origin refers to the place where you cloned the code from (github) and master refers to the branch you're on.
+
+Once you're done with the homework and it has been committed to your laptop, push it to your fork on Github. Then open a pull request. Your assignment will be graded from this pull request.
 
 
 ## Erb
@@ -50,7 +61,7 @@ The flow for generating ruby powered html generally works like this. First we ge
 Erb blocks without the equals will not print out `<% %>` but will still be evaluated. You can use these for doing work such as math in your erb template.
 
 
-## 1) Erb Example
+## 1) Using ERB
 
 In the terminal you can run
 
@@ -58,7 +69,7 @@ In the terminal you can run
 
 Homework:
 
-Modify the file, and re-run it using ruby. Add at least 3 more lines and 3 more erb blocks with different types of contents, consider using strings, arrays, hashes, or integers.
+Open the file in your favorite text editor to modify the file, and re-run it using ruby. Add at least 3 more lines and 3 more erb blocks with different types of contents, consider using strings, arrays, hashes, or integers.
 
 Try modifying the data in the erb blocks using concatenation or other methods.
 
@@ -80,17 +91,17 @@ homework:
 
 Add another file to the `/views` directory with your name. Add some personalized content directly to the file. Pretend this is geocities and you're making a home-page. Try using different tags such as `<div>`, `<p>`, `<span>`, or look up tags to use on w3c.
 
-Use an array `[]` and the `each` method to output some content on your page in list items.
+Use an array `[]` and the `each` method to output some content on your page in list items. For example:
 
     <ul>
-      <% ['apples', 'oranges', 'bananas'].each do |fruit|
+      <% ['apples', 'oranges', 'bananas'].each do |fruit| %>
         <li>I like to eat <%= fruit %></li>
       <% end %>
     </ul>
 
-After each change, you can run the generator and then refresh your browser.
+After each change, you can run the generator and open this page in your browser.
 
-If you get errors try re-running the generator and reading the error messages. You can add debugging `puts` statements in your view or the script to help you figure out what is going on
+If you get errors try re-running the generator and reading the error messages. You can add debugging `puts` statements in your view or the script to help you figure out what is going on.
 
 Commit the results to git
 
