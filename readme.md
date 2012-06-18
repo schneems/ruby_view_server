@@ -2,9 +2,11 @@
 
 ## What?
 
-This project uses pure ruby and standard libraries to perform 4 basic functions. The goal is to generate useful html pages using as little code as possible.
+This project uses pure ruby and standard libraries to perform a few basic functions. The goal is to generate useful html pages using as little code as possible.
 
 We gradually increase the complexity of the code as we add more functionality and make development simpler.
+
+All code that starts with a `$` indicates it is running in the terminal. You should not copy the `$`.
 
 
 ## Git homework
@@ -77,7 +79,7 @@ If you get errors try re-running the generator and reading the error messages. Y
 
 Commit the results to git
 
-## 2) Simple Page Generator Example
+## 2) Generate HTML with Ruby
 
 In the terminal you can run
 
@@ -105,22 +107,22 @@ If you get errors try re-running the generator and reading the error messages. Y
 
 Commit the results to git
 
-## 3) Page Generator with Layout
+## 3) Use a Layout to Add Content to All Pages
 
-If you want to add some content to all the pages such as a header containing a global navigation or a footer containing copyright information it would be tedious to add this to each page. Such a task would not be very DRY (don't repeat yourself) since modifying one file would mean you need to mondify many.
+If you want to add some content to all the pages such as a header containing a global navigation or a footer containing copyright information it would be tedious to add this to each page. Such a task would not be very DRY (don't repeat yourself) since modifying one file would mean you need to modify many.
 
 Instead we could have a header erb file and a footer erb file that we could join with the contents in our 'views` directory. This would make modifications simple.
 
-Even better we can use a layout file. Here we've provided one in `layouts` with the name `application.html.erb` since it is the main layout for this application. This file provides an easy way to modify the content before or after the page content, and is very easy to edit since it is all in one place.
+Even better we can use a layout file. Here we've provided one in `layouts` with the name `application.html.erb`. This file provides an easy way to modify the page before or after the page content, and is very easy to edit since it is all in one place.
 
-We are using the concept of yielding to a block with ruby to insert our page contents into the middle of the layout file. If you look in the application file you will see `<%= yield %>` this is where the content for your pages goes. Blocks will be covered later, or you can look up some examples and see the code in `block_example.rb` if you're interested.
+We are using the concept of **yielding** to a block with ruby, to insert our page contents into the middle of the layout file. If you look in the application file you will see `<%= yield %>` this is where the content for your pages goes. Blocks will be covered later, or you can look up some examples and see the code in `block_example.rb` if you're interested.
 
 
 In the terminal you can run:
 
     $ ruby page_generator_with_layout.rb
 
-This should take the contents of the files you modified in section #2 and output them again to the `public` directory, only now they have a layout.
+This should take the contents of the files you modified in section #2 and output them again to the `public` directory, only now they have a layout. Drag one of them the browser.
 
 
 Homework:
@@ -131,7 +133,7 @@ Modify the default layout. Add links to some websites in the header & footer. A 
 
 Re-run the `page_generator_with_layout.rb` file and then refresh your page. You should now see links and be able to click on them.
 
-Now that you've got some working links, lets define a ruby method to help us make links in the future. Open up your template and declare a function at the top of the file.
+Now that you've got some working links, lets define a ruby method to help us make links in the future. Open up your layout (`application.html.erb`) and declare a function at the top of the file.
 
 
       <%
@@ -166,17 +168,20 @@ You should see an output that looks something like this:
     [2012-06-15 16:05:28] INFO  ruby 1.9.3 (2012-04-20) [x86_64-darwin11.4.0]
     [2012-06-15 16:05:28] INFO  WEBrick::HTTPServer#start: pid=85507 port=8000
 
-That means our server has started and is listening on port 8000. You can open up a new browser tab and go to [http://localhost:8000/index](http://localhost:8000/index) and you will see the contents of `public/html/index.html.erb` rendered in your browser. Open `server_simple.rb` in a text editor and take a look at the contents.
+That means our server has started and is listening on port 8000. You can open up a new browser tab and go to [http://localhost:8000/index.html](http://localhost:8000/index.html) and you will see the contents of `public/html/index.html.erb` rendered in your browser. Open `server_simple.rb` in a text editor and take a look at the contents.
 
 
 Homework:
 
+To restart your server: you can use `CTL + C` to kill your server then restart it by pressing up and hitting enter)
+
 1)
-Try modifying a file in your `views` directory and then restart your server and see if you saw any changes? If not, ask why. Try running the generator script again
+Try modifying a file in your `views` directory, are there any changes? If not, ask why. Try running the generator script again
 
     $ ruby page_generator_with_layout.rb
 
- Then restarting the server and refreshing your web page. Do you see your changes? Why were some of these steps necessary, were all of them needed?
+ Then refreshing your web page. Do you see your changes? Why were some of these steps necessary, were all of them needed?
+
 
 2)
 Rather than reading static files you can output any content you generate in ruby. Add this to `server_simple.rb` before the `server.start` line
@@ -199,7 +204,7 @@ In the terminal you can run:
 
     $ ruby server_advanced.rb
 
-This script looks in your `views` directory and reads in all the names of files you've go, it then maps those names to urls you can reach by going to [http://localhost:8000/your_file_name_here](http://localhost:8000/your_file_name_here) such as [http://localhost:8000/index](http://localhost:8000/index). Once the server is running you can add some dynamic content such as
+This script looks in your `views` directory and reads in all the names of files, it then maps those names to urls you can reach by going to [http://localhost:8000/your_file_name_here](http://localhost:8000/your_file_name_here) such as [http://localhost:8000/index](http://localhost:8000/index). Once the server is running you can add some dynamic content such as
 
     <%= Time.now %>
 
