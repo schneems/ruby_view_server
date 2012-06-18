@@ -182,6 +182,7 @@ Try modifying a file in your `views` directory, are there any changes? If not, a
 
  Then refreshing your web page. Do you see your changes? Why were some of these steps necessary, were all of them needed?
 
+ Any new changes to files in /public will be picked up by the server but if you change something in your /views (html.erb files) you will need to re-run the generator. After this homework, in next section we will automate this task.
 
 2)
 Rather than reading static files you can output any content you generate in ruby. Add this to `server_simple.rb` before the `server.start` line
@@ -226,30 +227,32 @@ In this section we will add a simple text box and button asking visitors to ente
 
 Since we're building the html from the server we have access to the request (req) local variable inside of our erb. If you look at the class of the req object you'll see it is a WEBrick::HTTPRequest, and if you search for WEBrick::HTTPRequest docs you will find the [WEBrick::HTTPRequest documentationn](http://www.ruby-doc.org/stdlib-1.9.3/libdoc/webrick/rdoc/WEBrick/HTTPRequest.html). Here we see that if we call `query` on this object wee will get the query returned as a hash. In your layout add this somewhere:
 
-        <%= req.query.inspect %>
+        <%= @request.query.inspect %>
 
 Now refresh the page, what do you see? Probably an empty hash `{}` try adding a query string on to the end of your url like [http://localhost:8000/index?cat=meow](http://localhost:8000/index?cat=meow). a query string is the stuff after the `?` at the end of a url, when you do a search on google this is how google gets the info.
 
-You should now see `{"cat" => "meow"}` where you put you `req.query`. When you see the data in a query string `?` it means the data was transfered by a GET request. You can even see that it was a GET request in the server log
+You should now see `{"cat" => "meow"}` where you put you `@request.query.inspect`. When you see the data in a query string `?` it means the data was transfered by a GET request. You can even see that it was a GET request in the server log
 
         localhost - - [16/Jun/2012:16:47:03 CDT] "GET /index?cat=meow HTTP/1.1" 200 444
 
 If you wanted to send data without exposing that via a query string you can do so using a POST request with a form. Add this to your layout:
 
 
-        <form method='post'>
+        <form method='post' action="<%= @request.path %>">
             First name: <input type="text" name="first_name" placeholder='first name'/><br />
             <input type="submit" value="Submit" />
         </form>
 
 
-Refresh the page, and enter your name, and hit 'submit'. This will send your name in a field called 'first_name' to the server, the server will then parse the erb, call `req.query` and convert your query to a hash such as ` {"first_name"=>"richard"}` it will then convert the erb to html and server it back to your browser. You should now see your name in the view like this:
+Refresh the page, and enter your name, and hit 'submit'. This will send your name in a field called 'first_name' to the server, the server will then parse the erb, call `@request.query` and convert your query to a hash such as ` {"first_name"=>"richard"}` it will then convert the erb to html and server it back to your browser. You should now see your name in the view like this:
 
          {"first_name"=>"bar"}
 
+Note, you will no longer be able to run the generator scripts or the simple server with <% req %> in your files.
+
 Homework:
 
-People like to feel welcomed when they visit a new web page, but they don't like random `{}` characters. Write some logic that if `req.query['first_name'] && req.query['first_name'].empty?` then don't show the query hash, otherwise show a welcome message that says their name, for example "Hello Richard".
+People like to feel welcomed when they visit a new web page, but they don't like random `{}` characters. Write some logic that if `@request.query['first_name'] && @request.query['first_name'].empty?` then don't show the query hash, otherwise show a welcome message that says their name, for example "Hello Richard".
 
 
 In ruby only `nil` and `false` will evaluate as false see the data in `boolean_logic_cheatsheet.rb` in this project
@@ -261,5 +264,10 @@ Commit the results.
 
 # Done
 
-Congrats, we've built and modified a very simple web server that delivers dynamic content. With a few simple modifications we could push this to a platform such as Heroku to server our dynamic site. The important take aways from this exercise are manipulating view files and understanding how our server takes in request data and generates html to deliver back to browsers. Don't forget to push your changes back to your fork.
+What did we just do? We started off turning erb (the ruby code) into html. We modified our files with ruby code and even had arrays (.each) generate lists for us. How cool is that! We got lazy and added a simple way to add a layout (application.html.erb) to our website. Then we learned how to serve static html pages with a simple server. Finally we saw how to generate truly dynamic content using the advanced server. It read in the erb files, generated html and returned that html directly to browsers without having to write it to a static file first. The advanced server even understands query strings in urls `?cat=meow` and how to manipulate html based on a `first_name` form.
+
+
+You are an incredible person. Way to go! Understanding how to manipulate views in the context of a server is a large part of what Rails developers do every day.
+
+Don't forget to push your changes back to your fork.
 
