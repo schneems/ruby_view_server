@@ -12,11 +12,11 @@ def process_erb(string, req = nil)
 end
 
 Dir['views/*.html.erb'].each do |file|
-  content_string  = File.open(file, 'r').read
+  puts "Registering file for server: #{file}"
   file_name       = file.split('/').last.gsub('.html.erb', '')
   server.mount_proc "/#{file_name}" do |req, res|
+    content_string  = File.open(file, 'r').read
     @request = req
-
     layout_string   = File.open('views/layouts/application.html.erb', 'r').read
     main_contents   = process_erb(content_string)
     res.body        = process_erb(layout_string, req) {main_contents}
