@@ -252,7 +252,14 @@ Note, you will no longer be able to run the generator scripts or the simple serv
 
 Homework:
 
-People like to feel welcomed when they visit a new web page, but they don't like random `{}` characters. Write some logic that if `@request.query['first_name'] && @request.query['first_name'].empty?` then don't show the query hash, otherwise show a welcome message that says their name, for example "Hello Richard".
+People like to feel welcomed when they visit a new web page, but they don't like random `{}` characters. Write some logic that if `@request.query['first_name'] && @request.query['first_name'].empty?` then don't show the query hash, otherwise show a welcome message that says their name, for example "Hello Richard". For example you could add this:
+
+
+      <% if @request.query['first_name'] && !@request.query['first_name'].empty? %>
+        Hello there <%= @request.query['first_name'] %>
+      <% else %>
+        Enter thy name
+      <% end %>
 
 
 In ruby only `nil` and `false` will evaluate as false see the data in `boolean_logic_cheatsheet.rb` in this project
