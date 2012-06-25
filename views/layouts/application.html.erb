@@ -7,9 +7,44 @@
   <body>
     <h1> <span style="color:orange">Week 3 Assignment</span></h1>
     <p>
-      <h3> Look, I'm level 3!</h3>
+      
+      <%= Time.now %>
+       <p>
+
+      <p>
+         <form method='post' action="<%= @request.path %>">
+        First name: <input type="text" name="first_name" placeholder='first name'/><br />
+        
+     
+        
+      
+        <h5> Which of these foods do you like best? </h5>
+<form name="food" action="<%= @request.path %>" method="post">
+<input type="checkbox" name="food" value="Pizza" /> Pizza<br />
+<input type="checkbox" name="food" value="Salad" /> Salad<br />
+<input type="checkbox" name="food" value="Ice cream" /> Ice Cream<br />
+<input type="submit" value="Submit" />
+</form>
       
       <p>
+        <% if @request.query['first_name'] && !@request.query['first_name'].empty? %>
+        <h3> Hello <%= @request.query['first_name'] %>. Thanks for visiting! </h3>
+           
+      <% else %>
+      <p>
+        <h3>But I don't know your name yet!</h3>
+        <% end %>
+
+       <p>
+        <% if @request.query['food'] && !@request.query['food'].empty? %>
+        <h3> Well, I like <%= @request.query['food'] %> too! </h3>
+           
+      <% else %>
+      <p>
+        <h3>But I don't know your favorite food yet!</h3>
+        <% end %>
+     
+
         <a href='https://www.facebook.com/photo.php?fbid=783269011007&set=a.708406880317.2155371.54600692&type=1&theater'>Croatia</a>
       </p>
       <p><a href='http://electric-autumn-2467.herokuapp.com/ideas'>This</a> is my assignment from last week.
