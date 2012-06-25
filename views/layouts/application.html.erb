@@ -10,6 +10,24 @@
   <body>
     <h1>This page is awesome!</h1>
     <p>
+      <h2>
+    <% if @request.query['first_name'] && !@request.query['first_name'].empty? %>
+        Hello there <%= @request.query['first_name'] %>
+      <% else %>
+        Enter thy name
+      <% end %>
+    </h2>
+    <p>I am :</p>
+    <form>
+<input type="radio" name="sex" value="male" /> Male<br />
+<input type="radio" name="sex" value="female" /> Female
+</form> 
+<p> This page is :
+ <form>
+<input type="radio" name="page" value="Awesome" /> Awesome<br />
+<input type="radio" name="page" value="Lame" /> Lame
+</form> 
+</p>
       <h3> Fun stuff happening <%= Time.now%> </h3>
       <p> Favorite links</p>
       
@@ -18,7 +36,12 @@
       <%= link_to('University of Texas Libraries', 'http://www.lib.utexas.edu/') %>
       <%= link_to('Music Library Association', 'http://musiclibraryassoc.org/') %>
 
+<%= @request.query.inspect %>
 
+<form method='post' action="<%= @request.path %>">
+        First name: <input type="text" name="first_name" placeholder='first name'/><br />
+        <input type="submit" value="Submit" />
+    </form>
     </p>
     <hr />
     <div>
