@@ -1,10 +1,23 @@
-<html>
+<%
+    def link_to(name, url)
+        return "<a href='#{url}'>#{name}</a>"
+     end
+    %>
+    <html>
+    <head>
+      <title>Joseph's Awesome Stuff</title>
+    </head>
   <body>
-    <h1>You're using a layout</h1>
+    <h1>This page is awesome!</h1>
     <p>
-      <h3> I'm a header</h3>
-      <p>Put things in the header</p>
-      <a href='me.html'>Me</a>
+      <h3> Fun stuff happening <%= Time.now%> </h3>
+      <p> Favorite links</p>
+      
+      <a href='http://www.loc.gov/index.html'>Library of Congress</a>
+      <a href='http://library.tamu.edu/directory/browse/O'>Me</a>
+      <%= link_to('University of Texas Libraries', 'http://www.lib.utexas.edu/') %>
+      <%= link_to('Music Library Association', 'http://musiclibraryassoc.org/') %>
+
 
     </p>
     <hr />
@@ -13,8 +26,13 @@
     </div>
     <hr />
     <div>
-      <h3> I'm a footer</h3>
-      <p>Put things in the footer</p>
+      <h3>Notes</h3>
+      <p>More Awesome Links
+<a href='http://schneems.com/'>Schneems</a>
+<a href='http://www.texastribune.org/'>Texas Tribune<a/>
+  <%= link_to('http://www.npr.org/','NPR') %>
+  <%= link_to('http://connect.ala.org/','ALA Connect')%>
+      </p>
     </div>
   </body>
 </html>
