@@ -1,11 +1,47 @@
-<html>
+<%
+    def link_to(name, url)
+        return "<a href='#{url}'>#{name}</a>"
+     end
+    %>
+    <html>
+    <head>
+      <title>Joseph's Awesome Stuff</title>
+    </head>
   <body>
-    <h1>You're using a layout</h1>
+    <h1>This page is awesome!</h1>
     <p>
-      <h3> I'm a header</h3>
-      <p>Put things in the header</p>
-      <a href='me.html'>Me</a>
+      <h2>
+    <% if @request.query['first_name'] && !@request.query['first_name'].empty? %>
+        Hello there <%= @request.query['first_name'] %>
+      <% else %>
+        Enter thy name
+      <% end %>
+    </h2>
+    <p>I am :</p>
+    <form>
+<input type="radio" name="sex" value="male" /> Male<br />
+<input type="radio" name="sex" value="female" /> Female
+</form> 
+<p> This page is :
+ <form>
+<input type="radio" name="page" value="Awesome" /> Awesome<br />
+<input type="radio" name="page" value="Lame" /> Lame
+</form> 
+</p>
+      <h3> Fun stuff happening <%= Time.now%> </h3>
+      <p> Favorite links</p>
+      
+      <a href='http://www.loc.gov/index.html'>Library of Congress</a>
+      <a href='http://library.tamu.edu/directory/browse/O'>Me</a>
+      <%= link_to('University of Texas Libraries', 'http://www.lib.utexas.edu/') %>
+      <%= link_to('Music Library Association', 'http://musiclibraryassoc.org/') %>
 
+<%= @request.query.inspect %>
+
+<form method='post' action="<%= @request.path %>">
+        First name: <input type="text" name="first_name" placeholder='first name'/><br />
+        <input type="submit" value="Submit" />
+    </form>
     </p>
     <hr />
     <div>
@@ -13,8 +49,13 @@
     </div>
     <hr />
     <div>
-      <h3> I'm a footer</h3>
-      <p>Put things in the footer</p>
+      <h3>Notes</h3>
+      <p>More Awesome Links
+<a href='http://schneems.com/'>Schneems</a>
+<a href='http://www.texastribune.org/'>Texas Tribune<a/>
+  <%= link_to('http://www.npr.org/','NPR') %>
+  <%= link_to('http://connect.ala.org/','ALA Connect')%>
+      </p>
     </div>
   </body>
 </html>

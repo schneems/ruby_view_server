@@ -1,0 +1,20 @@
+
+
+<% name = 'Joseph' %>
+<h1> <%= name %> </h1>
+<% work = 'Texas A&M University' %>
+<% dept = 'Cataloging' %>
+<p>
+	My name is <%= name %> and I work at <%= work %> in the <%= dept %> department. I have 7 amazing co-workers and enjoy my job.
+</p>
+
+	<ul>
+		<%['hike','bike','travel'].each do |hobbies|%>
+			<li> I like to <%= hobbies %> </li>
+			<% end %>
+	</ul>
+
+
+<section>
+	<footer>last visited: <%= Time.now %> </footer>
+</section>
