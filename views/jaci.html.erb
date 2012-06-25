@@ -1,0 +1,12 @@
+<h2> Jaci's page </h2>
+<p> Today is Monday. </p>
+<p>My favorite color is <span style="color:purple">purple</span>.</p>
+<p>Or maybe <span style="color:lightblue">light blue</span>.</p>
+<ul>
+<% fruit = ['apples', 'oranges', 'bananas'] %>
+<p> Here are some fruits: <%= fruit.join(", ") %> </p>
+  <% fruit.each do |x| %>
+    <li>I like to eat <%= x %></li>
+  <% end %>
+</ul>
+<p>This is the time: <%= Time.now %></p>

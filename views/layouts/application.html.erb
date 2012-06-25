@@ -1,20 +1,65 @@
+ <%
+    def link_to(name, url)
+        return "<a href='#{url}'>#{name}</a>"
+     end
+    %>
 <html>
   <body>
-    <h1>You're using a layout</h1>
+    <h1> <span style="color:orange">Week 3 Assignment</span></h1>
     <p>
-      <h3> I'm a header</h3>
-      <p>Put things in the header</p>
-      <a href='me.html'>Me</a>
+      
+      <%= Time.now %>
+       <p>
 
-    </p>
+      <p>
+         <form method='post' action="<%= @request.path %>">
+        First name: <input type="text" name="first_name" placeholder='first name'/><br />
+        
+     
+        
+      
+        <h5> Which of these foods do you like best? </h5>
+<form name="food" action="<%= @request.path %>" method="post">
+<input type="checkbox" name="food" value="Pizza" /> Pizza<br />
+<input type="checkbox" name="food" value="Salad" /> Salad<br />
+<input type="checkbox" name="food" value="Ice cream" /> Ice Cream<br />
+<input type="submit" value="Submit" />
+</form>
+      
+      <p>
+        <% if @request.query['first_name'] && !@request.query['first_name'].empty? %>
+        <h3> Hello <%= @request.query['first_name'] %>. Thanks for visiting! </h3>
+           
+      <% else %>
+      <p>
+        <h3>But I don't know your name yet!</h3>
+        <% end %>
+
+       <p>
+        <% if @request.query['food'] && !@request.query['food'].empty? %>
+        <h3> Well, I like <%= @request.query['food'] %> too! </h3>
+           
+      <% else %>
+      <p>
+        <h3>But I don't know your favorite food yet!</h3>
+        <% end %>
+     
+
+        <a href='https://www.facebook.com/photo.php?fbid=783269011007&set=a.708406880317.2155371.54600692&type=1&theater'>Croatia</a>
+      </p>
+      <p><a href='http://electric-autumn-2467.herokuapp.com/ideas'>This</a> is my assignment from last week.
+      </p>
+      <%= link_to('This is a link to a picture of my puppy', 'https://www.facebook.com/photo.php?fbid=445070668844732&set=a.164527630232372.34813.163213057030496&type=1&theater') %>
     <hr />
     <div>
       <%= yield %>
     </div>
     <hr />
     <div>
-      <h3> I'm a footer</h3>
-      <p>Put things in the footer</p>
+      <h3> This is the end of the page</h3>
+       <%= link_to("But isn't this puppy adorable?", 'https://www.facebook.com/photo.php?fbid=447520621933070&set=a.447520188599780.104947.163213057030496&type=1&theater') %>
+<p>
+       <%= link_to("Okay, here's one last puppy picture", 'https://www.facebook.com/photo.php?fbid=448195655198900&set=a.164527630232372.34813.163213057030496&type=1&theater') %>
     </div>
   </body>
 </html>
