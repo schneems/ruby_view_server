@@ -2,7 +2,7 @@
 
 ## What?
 
-This project uses pure ruby and standard libraries to perform a few basic functions. The goal is to generate useful html pages using as little code as possible.
+Part of my [UT on Rails course](http://schneems.com/ut-rails). Use pure ruby and standard libraries to perform a few basic functions to generate useful html pages using as little code as possible.
 
 We gradually increase the complexity of the code as we add more functionality and make development simpler.
 
