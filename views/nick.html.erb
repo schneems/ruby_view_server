@@ -1,0 +1,12 @@
+<% me = {name: "Nicholas Got", art: "yes", number: 78} %>
+<div>My name is <%= me[:name] %></div>
+<div>
+  <% if me[:art] == "yes" %>
+    <p>You clearly love art</p>
+  <% end %>
+</div>
+<ul>
+  <% ['mbuzi', 'ngombe', 'cat', 'dog'].each do |pet| %>
+    <li>I like <%= pet.capitalize %></li>
+  <% end %>
+</ul>
