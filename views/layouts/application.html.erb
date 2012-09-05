@@ -1,20 +1,57 @@
+<%
+  def link_to(name, url)
+    "<a href='#{url}', target='_blank'>#{name}</a>"
+  end
+%>
+
 <html>
   <body>
     <h1>You're using a layout</h1>
     <p>
       <h3> I'm a header</h3>
       <p>Put things in the header</p>
+      <div>
+        <a href="http://www.nicholasgot.com", target="_blank">A link to my website</a>
+      </div>
       <a href='me.html'>Me</a>
-
+      <p><%= link_to('A link to linked-in', 'http://linkedin.com') %></p>
     </p>
     <hr />
+    <p>
+      <% if @request.query['first_name'] && !@request.query['first_name'].empty? %>
+        Hello there <%= @request.query['first_name'] %>
+      <% else %>
+        Please enter your name
+      <% end %>
+    </p>
+
+    <form method='post' action="<% @request.path %>">
+      First name: <input type="text" name="first_name" placeholder='fist name'/><br />
+      <p>Gender: Male <input type="radio" name="gender" value="Male"/>
+                 Female<input type="radio" name="gender" value="Female"/>
+      </p>
+      <div>
+        Hobbies <br />
+          Soccer      <input type="checkbox" name="hobbies" value="soccer" /><br />
+          Reading     <input type="checkbox" name="hobbies" value="reading" /></br />
+          Programming <input type="checkbox" name="hobbies" value="programming" /><br />
+        </div>
+        <br />
+
+        Password <input type="password" name="password" /><br />
+      <input type="submit" value="Submit" />
+    </form>
+
     <div>
       <%= yield %>
     </div>
+
+
     <hr />
     <div>
       <h3> I'm a footer</h3>
       <p>Put things in the footer</p>
+      <a href="http://www.twitter.com/", target="_blank">And here my twitter feed</a>
     </div>
   </body>
 </html>
