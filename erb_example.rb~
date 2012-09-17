@@ -14,3 +14,13 @@ web_frameworks = ["rails", "django", "cakephp", "noir"]
 template2 = ERB.new "The World Class frameworks are: <%= web_frameworks %>"
 puts template2.result(binding)
 
+<ul>
+  <% ["rails", 'django', 'cakephp', 'noir'].each do |framework| %>
+    <li> People like <%= framework %></li>
+  <% end %>
+</ul>
+
+
+
+
+
