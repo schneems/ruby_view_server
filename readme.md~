@@ -271,7 +271,7 @@ Commit the results.
 
 # Done
 
-What did we just do? We started off turning erb (the ruby code) into html. We modified our files with ruby code and even had arrays (.each) generate lists for us. How cool is that! We got lazy and added a simple way to add a layout (application.html.erb) to our website. Then we learned how to serve static html pages with a simple server. Finally we saw how to generate truly dynamic content using the advanced server. It read in the erb files, generated html and returned that html directly to browsers without having to write it to a static file first. The advanced server even understands query strings in urls `?cat=meow` and how to manipulate html based on a `first_name` form.
+What did we just do? We started off turning erb (the ruby code) into html. We modified our files with ruby code and even had arrays (.each) generate lists for us. How cool is that! We got lazy and added a simple way to add a git layout (application.html.erb) to our website. Then we learned how to serve static html pages with a simple server. Finally we saw how to generate truly dynamic content using the advanced server. It read in the erb files, generated html and returned that html directly to browsers without having to write it to a static file first. The advanced server even understands query strings in urls `?cat=meow` and how to manipulate html based on a `first_name` form.
 
 
 You are an incredible person. Way to go! Understanding how to manipulate views in the context of a server is a large part of what Rails developers do every day.
