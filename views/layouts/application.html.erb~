@@ -1,4 +1,8 @@
-
+<%
+  def link_to(name, url)
+    return "<a href='#{url}'>#{name}</a>"
+  end
+%>
 <html>
   <body>
     <h1>You're using a layout</h1>
@@ -10,15 +14,15 @@
     </p>
     <hr />
     <div>
-      foo
+      <%= yield %>
     </div>
     <hr />
     <div>
       <h3> I'm a footer</h3>
       <p>This is Footer</p>
       
-      <a href='http://google.com'>This is a link to google</a><br>
-      <a href='http://yahoo.com'>This is a link to Yahoo</a>
+      <%= link_to('This is a link to google', 'http://google.com') %>
+      <%= link_to('This is a link to Yahoo', 'http://yahoo.com') %>
       
     </div>
   </body>
