@@ -1,0 +1,16 @@
+<h1>Thank you Richard Schneeman for Rails Tutorail</h1>
+<h2>FMEG08126</h2>
+<p>
+  Now we will List some Web development Frameworks
+</p>
+
+<% web = ["rails", "django", "noir", "cakephp", "express.js", "cuba"] %>
+<ul type="1">
+  <% web.each do |framework| %>
+    <h3><li> People like <%= framework %></li></h3>
+  <% end %>
+</ul>
+
+<% 1.times do %>
+  <h1><%= "This Rails Tutorial Rocks" %></h1>
+<% end %>

@@ -1,11 +1,11 @@
 <h1> Hello</h1>
 <p>
   The time is now:
-  2012-09-17 22:50:29 +0530
+  <%= Time.now %>
 </p>
 
 <p>
   My Name is:
-  
+  <%= @name %>
 </p>
 

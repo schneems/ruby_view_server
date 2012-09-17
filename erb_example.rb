@@ -14,9 +14,3 @@ web_frameworks = ["rails", "django", "cakephp", "noir"]
 template2 = ERB.new "The World Class frameworks are: <%= web_frameworks %>"
 puts template2.result(binding)
 
-
-
-
-
-
-
