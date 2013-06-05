@@ -1,0 +1,35 @@
+<%
+  title = "Herminio Torres"
+  subtitle = "programming ruby is funny"
+  menu = %[home about contact].split
+  mail = "herminiocesar@gmail.com"
+%>
+
+<header>
+  <h1><%= title %></h1>
+  <p><%= subtitle %></p>
+  <nav>
+    <ul>
+      <% menu.each do |item| %>
+        <li><a href="#"><%= item %></a></li>
+      <% end %>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section>
+    <% 3.times do %>
+      <h2>Lorem ipsum dolor sit amet</h2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, cum eveniet provident. Expedita, nesciunt, libero est dolor repellat vel obcaecati eum exercitationem porro facere mollitia perspiciatis harum doloremque aliquam autem?
+      </p>
+      <a href="#">read more</a><br>
+      <small>Author: <%= title %> at <%= Time.now.strftime("%m/%d/%Y - %H:%M") %></small>
+    <% end %>
+  </section>
+</main>
+
+<footer>
+  <p>contact: <a href="mailto:<%= mail %>"><%= mail %></a></p>
+</footer>
