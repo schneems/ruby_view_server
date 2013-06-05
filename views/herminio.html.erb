@@ -1,0 +1,43 @@
+<%
+  title = "Herminio Torres"
+  subtitle = "programming ruby is funny"
+  menu = %[home about contact].split
+  mail = "herminiocesar@gmail.com"
+
+  def link_to(name, url)
+    "<a href='#{url}'>#{name}</a>"
+  end
+
+  def mail_to(name, mail)
+    "<a href='mailto:#{mail}'>#{name}</a>"
+  end
+%>
+
+<header>
+  <h1><%= title %></h1>
+  <p><%= subtitle %></p>
+  <nav>
+    <ul>
+      <% menu.each do |item| %>
+        <li><%= link_to(item, "#") %></li>
+      <% end %>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section>
+    <% 3.times do %>
+      <h2>Lorem ipsum dolor sit amet</h2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, cum eveniet provident. Expedita, nesciunt, libero est dolor repellat vel obcaecati eum exercitationem porro facere mollitia perspiciatis harum doloremque aliquam autem?
+      </p>
+      <%= link_to("read more", "#") %><br>
+      <small>Author: <%= title %> at <%= Time.now.strftime("%m/%d/%Y - %H:%M") %></small>
+    <% end %>
+  </section>
+</main>
+
+<footer>
+  <p>contact: <%= mail_to(mail, mail) %> | twitter: <%= link_to("@herminiotorres", "https://twitter.com/herminiotorres") %></p>
+</footer>

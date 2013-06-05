@@ -1,3 +1,20 @@
+<% if @request.query["first_name"] && !@request.query["first_name"].empty? %>
+  <%= @request.query["first_name"].capitalize %> is <%= @request.query["sex"].capitalize %>, My Vehicle: <%= @request.query["vehicle"].capitalize %>
+<% else %>
+  <p>Enter your name:</p>
+<% end %>
+<form method="post" action="<%= @request.path %>">
+  First name: <input type="text" name="first_name" placeholder="first name"><br>
+
+  Gender: <input type="radio" name="sex" value="male">Male<br>
+  <input type="radio" name="sex" value="female">Female<br>
+
+  <input type="checkbox" name="vehicle" value="bike">I have a bike<br>
+  <input type="checkbox" name="vehicle" value="car">I have a car<br>
+
+  <input type="submit" value="Submit">
+</form>
+
 <h1> Hello</h1>
 <p>
   The time is now:
