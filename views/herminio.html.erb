@@ -3,6 +3,14 @@
   subtitle = "programming ruby is funny"
   menu = %[home about contact].split
   mail = "herminiocesar@gmail.com"
+
+  def link_to(name, url)
+    "<a href='#{url}'>#{name}</a>"
+  end
+
+  def mail_to(name, mail)
+    "<a href='mailto:#{mail}'>#{name}</a>"
+  end
 %>
 
 <header>
@@ -11,7 +19,7 @@
   <nav>
     <ul>
       <% menu.each do |item| %>
-        <li><a href="#"><%= item %></a></li>
+        <li><%= link_to(item, "#") %></li>
       <% end %>
     </ul>
   </nav>
@@ -24,12 +32,12 @@
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, cum eveniet provident. Expedita, nesciunt, libero est dolor repellat vel obcaecati eum exercitationem porro facere mollitia perspiciatis harum doloremque aliquam autem?
       </p>
-      <a href="#">read more</a><br>
+      <%= link_to("read more", "#") %><br>
       <small>Author: <%= title %> at <%= Time.now.strftime("%m/%d/%Y - %H:%M") %></small>
     <% end %>
   </section>
 </main>
 
 <footer>
-  <p>contact: <a href="mailto:<%= mail %>"><%= mail %></a></p>
+  <p>contact: <%= mail_to(mail, mail) %> | twitter: <%= link_to("@herminiotorres", "https://twitter.com/herminiotorres") %></p>
 </footer>
