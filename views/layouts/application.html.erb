@@ -1,3 +1,10 @@
+
+  <%
+    def link_to(name, url)
+        return "<a href='#{url}'>#{name}</a>"
+     end
+    %>
+
 <html>
   <body>
     <h1>You're using a layout</h1>
@@ -5,13 +12,26 @@
       <h3> I'm a header</h3>
       <p>Put things in the header</p>
       <a href='me.html'>Me</a>
-
+      <%= link_to "Homicide", "https://en.wikipedia.org/wiki/Homicide" %>
+      <%= link_to "Psycho", "https://en.wikipedia.org/wiki/Psycho" %>
     </p>
     <hr />
     <div>
       <%= yield %>
     </div>
+
+    <form method='post' action="<%= @request.path %>">
+        First name: <input type="text" name="first_name" placeholder='first name'/><br />
+        <input type="submit" value="Submit" />
+    </form>
+
     <hr />
+
+     <% if @request.query['first_name'] && !@request.query['first_name'].empty? %>
+    Hello there <%= @request.query['first_name'] %>
+  <% else %>
+    Enter thy name
+  <% end %>
     <div>
       <h3> I'm a footer</h3>
       <p>Put things in the footer</p>
