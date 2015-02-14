@@ -258,7 +258,7 @@ People like to feel welcomed when they visit a new web page, but they don't like
       <% if @request.query['first_name'] && !@request.query['first_name'].empty? %>
         Hello there <%= @request.query['first_name'] %>
       <% else %>
-        Enter thy name
+        Enter the name
       <% end %>
 
 
