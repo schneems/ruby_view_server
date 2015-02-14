@@ -5,10 +5,21 @@
       <h3> I'm a header</h3>
       <p>Put things in the header</p>
       <a href='https://www.google.com'>Link to Google</a>
-
     </p>
     <hr />
     <div>
+      <%= @request.query.inspect %> <br />
+      <% if @request.query['first_name'] && !@request.query['first_name'].empty? %>
+        Hello there <%= @request.query['first_name'] %>
+      <% else %>
+        Enter the name:
+      <% end %>
+
+      <form method='post' action="<%= @request.path %>">
+        first name: <input type="text" name="first_name" placeholder='first name' /><br />
+        <input type="submit" value="Submit">
+      </form>
+
       <%= yield %>
     </div>
     <hr />
