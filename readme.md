@@ -91,7 +91,7 @@ Run the generator and drag a page from the `public` directory to your browser, i
 
 homework:
 
-Add another file to the `/views` directory with your name. Add some personalized content directly to the file. Pretend this is geocities and you're making a home-page. Try using different tags such as `<div>`, `<p>`, `<span>`, or look up tags to use on w3c.
+Add another file to the `/views` directory with your name. Add some personalized content directly to the file. Pretend this is geocities and you're making a home-page. Try using different tags such as `<div>`, `<p>`, [`<span>`](https://www.scaler.com/topics/span-tag-in-html/), or look up tags to use on w3c.
 
 Use an array `[]` and the `each` method to output some content on your page in list items. For example:
 
